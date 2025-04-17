@@ -23,7 +23,7 @@
     .container {
       display: flex;
       width: 900px;
-      height: 400px;
+      height: auto;
       background-color: #fff;
       border-radius: 12px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -65,7 +65,8 @@
       color: #555;
     }
 
-    input[type="email"] {
+    input[type="email"],
+    input[type="text"] {
       width: 100%;
       padding: 12px 15px;
       margin-bottom: 20px;
@@ -89,30 +90,59 @@
     button:hover {
       background-color: #6621d3;
     }
+
+    #otp-section {
+      display: none;
+      width: 100%;
+    }
+
   </style>
 </head>
 <body>
   <div class="container">
     <div class="left-side">
-      <img src="campus.jpg" alt="SRM Building" />
+      <img src="building.jpg" alt="SRM Building" />
     </div>
     <div class="right-side">
-      <img class="logo" src="logo.png" alt="SRM Logo" />
+      <img class="logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/6/69/SRM_Institute_of_Science_and_Technology_Logo.svg/1200px-SRM_Institute_of_Science_and_Technology_Logo.svg.png" alt="SRM Logo" />
       <h2>Welcome to SRM</h2>
       <p>Please login to your account</p>
+
       <input type="email" id="email" placeholder="Email" />
       <button onclick="sendOTP()">Send OTP</button>
+
+      <div id="otp-section">
+        <input type="text" id="otp" placeholder="Enter OTP" />
+        <button onclick="verifyOTP()">Submit</button>
+      </div>
     </div>
   </div>
 
   <script>
+    let generatedOTP = "";
+
     function sendOTP() {
       const email = document.getElementById('email').value;
       if (email.trim() === '') {
         alert('Please enter your email.');
+        return;
+      }
+
+      // Generate a 6-digit OTP
+      generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+      console.log("Generated OTP (for testing):", generatedOTP); // For dev purposes
+
+      alert("OTP has been sent to " + email); // In real use, send via email
+      document.getElementById('otp-section').style.display = 'block';
+    }
+
+    function verifyOTP() {
+      const userOTP = document.getElementById('otp').value;
+      if (userOTP === generatedOTP) {
+        alert("OTP verified successfully!");
+        window.location.href = "complain.html";
       } else {
-        alert('OTP has been sent to ' + email);
-        // Here you can integrate your backend OTP logic
+        alert("Incorrect OTP. Please try again.");
       }
     }
   </script>
