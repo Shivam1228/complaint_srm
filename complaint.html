@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff ATR Report</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+</head>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/680076a3aa4f00190ed64514/1ip0sut4e';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    
+<body>
+    <h2>Action Taken Report</h2>
+    <form id="grievanceForm">
+        <!-- Existing Form Fields -->
+        <label for="atrNo">ATR No:</label>
+        <input type="text" id="atrNo" name="atrNo" required>
+        <br>
+        <label></label>
+        <input type="radio" id="staffOption" name="userType" value="Staff" checked>
+        <label for="staffOption">Staff</label>
+        <input type="radio" id="studentOption" name="userType" value="Student">
+        <label for="studentOption">Student</label>
+        <br>
+        <label for="capturePhotoInput">Capture Photo:</label>
+        <input type="file" id="capturePhotoInput" accept="image/*" capture="environment">
+        <button id="customFileButton">Choose File</button>
+        <input type="hidden" id="photoData">
+        <br>
+
+        
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+        <br>
+        <label for="studentName">Staff or Student Name:</label>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <select id="namePrefix" name="namePrefix" required>
+                <option value="Mr.">Mr.</option>
+                <option value="Ms.">Ms.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Dr.">Dr.</option>
+            </select>
+            <input type="text" id="studentName" name="studentName" required placeholder="Enter Name">
+        </div>
+        <br>
+        <label for="regNumber">Employee No / Registration No:</label>
+        <input type="text" id="regNumber" name="regNumber" required>
+        <br>
+        <label for="Department">Department Name:</label>
+        <input type="text" id="Department" name="Department" required>
+        <br>
+        <label for="HostelBlock">Block/Floor/Room No:</label>
+        <input type="text" id="HostelBlock" name="HostelBlock" required>
+        <br>
+        <label for="RoomNo">Official Email ID:</label>
+        <input type="text" id="RoomNo" name="RoomNo" required>
+        <br>
+        <label for="grievance">Grievance:</label>
+        <input type="text" id="grievance" name="grievance" required maxlength="38">
+        <br> 
+        <!-- <label for="grievance">Grievance:</label>
+        <input type="text" id="grievance" name="grievance" required>
+        <br> -->
+        <label for="feedback">Feedback:</label>
+        <select id="feedback" name="feedback" required>
+            <option value="">--Select Feedback--</option>
+            <option value="Good">Good</option>
+            <option value="Satisfactory">Satisfactory</option>
+            <option value="Poor">Poor</option>
+        </select>
+        <br>
+        <label for="dateGrievance">Date of Grievance:</label>
+        <input type="date" id="dateGrievance" name="dateGrievance" required maxlength="38">
+        <br>
+        <label for="dateResolution">Date of Grievance Resolution:</label>
+        <input type="date" id="dateResolution" name="dateResolution" required>
+        <br>
+        <label for="GrievanceResolvedby">GrievanceResolvedby:</label>
+        <input type="text" id="GrievanceResolvedby" name="GrievanceResolvedby" required>
+        <br>
+        <!-- Signature Buttons -->
+        <button type="button" id="studentSignatureBtn">Staff / Student Signature</button>
+        <input type="hidden" id="studentSignature">
+        <br>
+        <button type="button" id="additionalSignatureBtn">Technician Signature</button>
+        <input type="hidden" id="additionalSignature">
+        <br>
+
+       
+
+        
+        
+        <button id="generate-pdf-btn" type="button" onclick="fillPDF()">Download ATR</button>
+        
+
+
+    </form>
+
+    <!-- Modal for Signature Capture -->
+    <div id="signatureModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 999;">
+        <canvas id="signatureCanvas" style="background: white; margin: 50px auto; display: block; border: 2px solid black;"></canvas>
+        <button id="saveSignature">Save</button>
+        <button id="cancelSignature">Cancel</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
