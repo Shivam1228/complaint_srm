@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SRM Signup - OTP Verification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 850px;
+      max-width: 95%;
+    }
+
+    .left-side {
+      flex: 1;
+    }
+
+    .left-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .right-side {
+      flex: 1;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin: 5px 0;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    p {
+      margin: 0 0 20px;
+      color: #555;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #8338ec;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    #otp-section {
+      display: none;
+    }
+
+    .prev-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #aaa;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .prev-btn:hover {
+      background-color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="left-side">
+      <img src="campus.jpg" alt="SRM Building">
+    </div>
+
+    <div class="right-side">
+      <img src="logo.png" class="logo" alt="SRM Logo">
+      <h2>Signup to SRM Portal</h2>
+      <p>Use your college email to create an account</p>
+
+      <input type="email" id="email" placeholder="Enter your college email">
+      <button class="btn" onclick="sendOTP()">Send OTP</button>
+
+      <div id="otp-section">
+        <input type="text" id="otp" placeholder="Enter OTP">
+        <button class="btn" onclick="verifyOTP()">Submit</button>
+      </div>
+
+      <button class="prev-btn" onclick="goBack()">Previous</button>
+    </div>
+  </div>
+
+  <script>
+    function sendOTP() {
+      const email = document.getElementById('email').value;
+      if (!email) {
+        alert("Please enter your email");
+        return;
+      }
+      document.getElementById("otp-section").style.display = "block";
+      alert("OTP sent to your email (simulation)");
+    }
+
+    function verifyOTP() {
+      // Skipping OTP verification
+      window.location.href = "complaint.html";
+    }
+
+    function goBack() {
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>
