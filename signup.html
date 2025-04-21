@@ -82,10 +82,6 @@
       margin-bottom: 10px;
     }
 
-    #otp-section {
-      display: none;
-    }
-
     .prev-btn {
       width: 100%;
       padding: 12px;
@@ -99,6 +95,11 @@
 
     .prev-btn:hover {
       background-color: #888;
+    }
+
+    #otp-section, #password-section {
+      display: none;
+      width: 100%;
     }
   </style>
 </head>
@@ -119,7 +120,12 @@
 
       <div id="otp-section">
         <input type="text" id="otp" placeholder="Enter OTP">
-        <button class="btn" onclick="verifyOTP()">Submit</button>
+        <button class="btn" onclick="verifyOTP()">Submit OTP</button>
+      </div>
+
+      <div id="password-section">
+        <input type="password" id="new-password" placeholder="Set New Password">
+        <button class="btn" onclick="setPassword()">Set Password</button>
       </div>
 
       <button class="prev-btn" onclick="goBack()">Previous</button>
@@ -134,12 +140,27 @@
         return;
       }
       document.getElementById("otp-section").style.display = "block";
-      alert("OTP sent to your email (simulation)");
+      alert("OTP sent to your email (simulated)");
     }
 
     function verifyOTP() {
-      // Skipping OTP verification
-      window.location.href = "complaint.html";
+      const otp = document.getElementById('otp').value;
+      if (!otp) {
+        alert("Please enter the OTP");
+        return;
+      }
+      document.getElementById("password-section").style.display = "block";
+    }
+
+    function setPassword() {
+      const password = document.getElementById('new-password').value;
+      if (!password) {
+        alert("Please enter a new password");
+        return;
+      }
+      // Simulating password saving...
+      alert("Password set successfully. Please sign in.");
+      window.location.href = "index.html"; // Redirect to login page
     }
 
     function goBack() {
